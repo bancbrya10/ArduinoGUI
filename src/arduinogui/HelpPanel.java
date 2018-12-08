@@ -21,7 +21,9 @@ public class HelpPanel extends JPanel{
                 + " Then, from the main menu (which is reached by pressing the Back "
                 + "button below) you will select the component you are working with."
                 + " From there, place the cursor where you would like the text to be written"
-                + " and select the option you would like to implement in your script.");
+                + " and select the option you would like to implement in your script."
+                + " For any GUI components that involve a text box (Pin number/Delay),"
+                + " press enter when the desired value is entered in the box.");
         
         //Configure textArea settings
         helpInfo.setLineWrap(true);
