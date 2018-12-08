@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class InputParser {
     Robot robot;
     
-    public InputParser(String input){
+    public InputParser(){
         try {
             robot = new Robot();
         } catch (AWTException ex) {
@@ -30,6 +30,10 @@ public class InputParser {
             Logger.getLogger(InputParser.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "alert", "Robot permission is not granted.", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public InputParser(Robot robot){
+        this.robot = robot;
     }
     
     public void type(CharSequence characters) {
