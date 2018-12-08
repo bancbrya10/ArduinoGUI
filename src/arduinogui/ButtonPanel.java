@@ -18,6 +18,8 @@ public class ButtonPanel extends JPanel{
     protected JTextField pinTextField;
     protected Button highButton;
     protected Button lowButton;
+    protected InputParser inputParser;
+    private int pinNumber;
     
     //Initialize components and layout parameters
     public ButtonPanel(){
@@ -25,6 +27,7 @@ public class ButtonPanel extends JPanel{
         pinTextField = new JTextField();
         highButton = new Button("High");
         lowButton = new Button("Low");
+        inputParser = new InputParser();
         
         //GridLayout manager
         setLayout(new GridLayout(2,2));
@@ -33,7 +36,20 @@ public class ButtonPanel extends JPanel{
         setBorder(BorderFactory.createTitledBorder("Button"));
         
         //Add action listeners
+        pinTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                pinNumber = Integer.parseInt(pinTextField.getText().toString());
+                inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);");
+            }
+        });
         
+        highButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                inputParser.type("HIGH");
+            }
+        });
         
         //Add components to panel
         add(pinLabel);
