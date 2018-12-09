@@ -18,6 +18,7 @@ public class ArduinoGui extends JFrame{
 
     private ComponentPanel componentPanel;
     private Button backButton;
+    public static String path;
     
     public ArduinoGui(){
         componentPanel = new ComponentPanel();
@@ -87,6 +88,13 @@ public class ArduinoGui extends JFrame{
                 add(new HelpPanel(), BorderLayout.NORTH);
                 add(backButton, BorderLayout.SOUTH);
                 getContentPane().revalidate();
+            }
+        });
+        
+        componentPanel.pathTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                path = componentPanel.pathTextField.getText();
             }
         });
         
