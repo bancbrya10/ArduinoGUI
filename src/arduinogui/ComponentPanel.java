@@ -6,8 +6,6 @@ package arduinogui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  *
@@ -20,6 +18,8 @@ public class ComponentPanel extends JPanel{
     protected Button buzzerButton;
     protected Button tempButton;
     protected Button helpButton;
+    protected JLabel pathLabel;
+    protected JTextField pathTextField;
     
     //Constructor to initialize components and set layout parameters
     public ComponentPanel(){
@@ -29,9 +29,11 @@ public class ComponentPanel extends JPanel{
         buzzerButton = new Button("Buzzer");
         tempButton = new Button("Temperature Sensor");
         helpButton = new Button("Help");
+        pathLabel = new JLabel("Path");
+        pathTextField = new JTextField();
         
         //GridLayout manager
-        setLayout(new GridLayout(6,1));
+        setLayout(new GridLayout(8,1));
         
         //BorderLayout manager
         setBorder(BorderFactory.createTitledBorder("Choose Component"));
@@ -43,5 +45,7 @@ public class ComponentPanel extends JPanel{
         add(buzzerButton);
         add(tempButton);
         add(helpButton);
+        add(pathLabel);
+        add(pathTextField);
     }
 }
