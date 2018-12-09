@@ -16,17 +16,15 @@ import java.awt.Robot;
 public class ButtonPanel extends JPanel{
     protected JLabel pinLabel;
     protected JTextField pinTextField;
-    protected Button highButton;
-    protected Button lowButton;
+    protected Button checkButton;
     protected InputParser inputParser;
     private int pinNumber;
     
     //Initialize components and layout parameters
     public ButtonPanel(){
-        pinLabel = new JLabel("Pin");
+        pinLabel = new JLabel("Pin Number");
         pinTextField = new JTextField();
-        highButton = new Button("High");
-        lowButton = new Button("Low");
+        checkButton = new Button("Check Status");
         inputParser = new InputParser();
         
         //GridLayout manager
@@ -39,22 +37,33 @@ public class ButtonPanel extends JPanel{
         pinTextField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                pinNumber = Integer.parseInt(pinTextField.getText().toString());
-                inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);");
+                if(Integer.parseInt(pinTextField.getText()) >= 0 && Integer.parseInt(pinTextField.getText()) <= 13){
+                    pinNumber = Integer.parseInt(pinTextField.getText());
+                    inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-13", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
-        highButton.addActionListener(new ActionListener() {
+        checkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                inputParser.type("HIGH");
+                if(pinNumber >= 0 && pinNumber <= 13){
+                    inputParser.type("if(digitalRead(" + pinNumber + "){\n"
+                            + "\n"
+                            + "}\n"
+                            + "else{\n"
+                            + "\n"
+                            + "}");
+                }
             }
         });
         
         //Add components to panel
         add(pinLabel);
         add(pinTextField);
-        add(highButton);
-        add(lowButton);
+        add(checkButton);
     }
 }
