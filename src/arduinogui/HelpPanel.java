@@ -23,7 +23,10 @@ public class HelpPanel extends JPanel{
                 + " From there, place the cursor where you would like the text to be written"
                 + " and select the option you would like to implement in your script."
                 + " For any GUI components that involve a text box (Pin number/Delay),"
-                + " press enter when the desired value is entered in the box.");
+                + " press enter when the desired value is entered in the box."
+                + " \nNOTE: CMDOW must be installed on your computer to use this application."
+                + " To install visit https://ritchielawrence.github.io/cmdow/ and copy"
+                + " the contents to the Resource folder  in the ArduinoGui project folder.");
         
         //Configure textArea settings
         helpInfo.setLineWrap(true);
