@@ -8,8 +8,6 @@ package arduinogui;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,12 +20,12 @@ public class InputParser {
     public InputParser(){
         try {
             robot = new Robot();
-        } catch (AWTException ex) {
-            Logger.getLogger(InputParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (AWTException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "alert", "Your system configuration does not allow low level input control.", JOptionPane.ERROR_MESSAGE);
         }
-        catch(SecurityException ex){
-            Logger.getLogger(InputParser.class.getName()).log(Level.SEVERE, null, ex);
+        catch(SecurityException e){
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "alert", "Robot permission is not granted.", JOptionPane.ERROR_MESSAGE);
         }
     }
