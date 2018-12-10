@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Robot;
 
 /**
  *
@@ -18,14 +17,18 @@ public class ButtonPanel extends JPanel{
     protected JTextField pinTextField;
     protected Button checkButton;
     protected InputParser inputParser;
-    private int pinNumber;
+    protected int pinNumber;
+    protected FocusChanger focusChanger;
+    protected String path;
     
     //Initialize components and layout parameters
-    public ButtonPanel(){
+    public ButtonPanel(String path){
         pinLabel = new JLabel("Pin Number");
         pinTextField = new JTextField();
         checkButton = new Button("Check Status");
         inputParser = new InputParser();
+        this.path = path;
+        focusChanger = new FocusChanger(path);
         
         //GridLayout manager
         setLayout(new GridLayout(2,2));
@@ -37,12 +40,14 @@ public class ButtonPanel extends JPanel{
         pinTextField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(Integer.parseInt(pinTextField.getText()) >= 0 && Integer.parseInt(pinTextField.getText()) <= 13){
-                    pinNumber = Integer.parseInt(pinTextField.getText());
-                    inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);");
+                int temp = Integer.parseInt(pinTextField.getText());
+                if(temp >= 0 && temp <= 13){
+                    pinNumber = temp;
+                    focusChanger.changeWindow();
+                    inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-13", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a number 0-13", "alert", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -51,12 +56,14 @@ public class ButtonPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(pinNumber >= 0 && pinNumber <= 13){
+                    focusChanger.changeWindow();
                     inputParser.type("if(digitalRead(" + pinNumber + "){\n"
                             + "\n"
                             + "}\n"
-                            + "else{\n"
-                            + "\n"
-                            + "}");
+                            + "else{\n");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
