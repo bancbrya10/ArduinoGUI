@@ -21,7 +21,7 @@ public class LEDPanel extends JPanel{
     protected JTextField delayTextField;
     protected FocusChanger focusChanger;
     protected String path;
-    protected int pinNumber;
+    protected int pinNumber = -1;
     protected InputParser inputParser;
     
     
