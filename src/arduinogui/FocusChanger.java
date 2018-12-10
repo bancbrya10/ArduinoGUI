@@ -9,8 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +18,9 @@ import java.util.logging.Logger;
  */
 public class FocusChanger {
     String id;
-    Calendar today;
     String path;
     
     public FocusChanger(String path){
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.SECOND, 0);
         this.path = path;
         
         id = parseId();
