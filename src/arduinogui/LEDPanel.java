@@ -51,7 +51,7 @@ public class LEDPanel extends JPanel{
                 if(temp >= 0 && temp <= 13){
                     pinNumber = temp;
                     focusChanger.changeWindow();
-                    inputParser.type("pinMode(" + pinNumber + ", INPUT_PULLUP);\n");
+                    inputParser.type("pinMode(" + pinNumber + ", OUTPUT);\n");
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-13", JOptionPane.ERROR_MESSAGE);
