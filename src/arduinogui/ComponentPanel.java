@@ -20,6 +20,7 @@ public class ComponentPanel extends JPanel{
     protected Button helpButton;
     protected JLabel pathLabel;
     protected JTextField pathTextField;
+    protected String path;
     
     //Constructor to initialize components and set layout parameters
     public ComponentPanel(){
@@ -31,6 +32,34 @@ public class ComponentPanel extends JPanel{
         helpButton = new Button("Help");
         pathLabel = new JLabel("Path");
         pathTextField = new JTextField();
+        
+        //GridLayout manager
+        setLayout(new GridLayout(8,1));
+        
+        //BorderLayout manager
+        setBorder(BorderFactory.createTitledBorder("Choose Component"));
+        
+        //Add Components to the panel
+        add(buttonButton);
+        add(ledButton);
+        add(analogButton);
+        add(buzzerButton);
+        add(tempButton);
+        add(helpButton);
+        add(pathLabel);
+        add(pathTextField);
+    }
+    
+    public ComponentPanel(String path){
+        buttonButton = new Button("Button");
+        ledButton = new Button("LED");
+        analogButton = new Button("Analog Stick");
+        buzzerButton = new Button("Buzzer");
+        tempButton = new Button("Temperature Sensor");
+        helpButton = new Button("Help");
+        pathLabel = new JLabel("Path");
+        pathTextField = new JTextField();
+        this.path = path;
         
         //GridLayout manager
         setLayout(new GridLayout(8,1));
