@@ -113,7 +113,6 @@ public class ArduinoGui extends JFrame{
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String path = ArduinoGui.path;
                 getContentPane().removeAll();
                 repaint();
                 add(componentPanel);
