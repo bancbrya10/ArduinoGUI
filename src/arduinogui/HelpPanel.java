@@ -14,9 +14,10 @@ import java.awt.*;
  */
 public class HelpPanel extends JPanel{
     protected JTextArea helpInfo;
+    protected String path;
     
     //Initialize component and layout parameters
-    public HelpPanel(){
+    public HelpPanel(String path){
         helpInfo = new JTextArea("To use this GUI, first open the Arduino IDE."
                 + " Then, from the main menu (which is reached by pressing the Back "
                 + "button below) you will select the component you are working with."
@@ -24,9 +25,11 @@ public class HelpPanel extends JPanel{
                 + " and select the option you would like to implement in your script."
                 + " For any GUI components that involve a text box (Pin number/Delay),"
                 + " press enter when the desired value is entered in the box."
-                + " \nNOTE: CMDOW must be installed on your computer to use this application."
+                + " \n\nNOTE: CMDOW must be installed on your computer to use this application."
                 + " To install visit https://ritchielawrence.github.io/cmdow/ and copy"
-                + " the contents to the Resource folder  in the ArduinoGui project folder.");
+                + " the path name to add to the path field. Be sure to press enter after pasting"
+                + " the path name into the field to save the path name to the gui.");
+        this.path = path;
         
         //Configure textArea settings
         helpInfo.setLineWrap(true);
