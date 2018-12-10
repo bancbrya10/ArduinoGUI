@@ -27,10 +27,9 @@ public class AnalogPanel extends JPanel{
     protected Button xLowButton;
     protected Button yLowButton;
     protected Button dLowButton;
-    protected int xPinNumber;
-    protected int yPinNumber;
-    protected int zPinNumber;
-    protected int dPinNumber;
+    protected int xPinNumber = -1;
+    protected int yPinNumber = -1;
+    protected int dPinNumber = -1;
     protected FocusChanger focusChanger;
     protected String path;
     protected InputParser inputParser;
