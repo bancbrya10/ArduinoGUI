@@ -8,8 +8,6 @@ package arduinogui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -44,10 +42,10 @@ public class FocusChanger {
                 }
             }
             return id;
-        } catch (IOException ex) {
-            Logger.getLogger(FocusChanger.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(FocusChanger.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         
         return null;
@@ -67,10 +65,10 @@ public class FocusChanger {
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime.exec(path + "cmdow " + id + " /act /res");
             process.waitFor();
-        } catch (IOException ex) {
-            Logger.getLogger(FocusChanger.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(FocusChanger.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
