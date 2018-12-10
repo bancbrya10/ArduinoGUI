@@ -19,11 +19,14 @@ public class TempPanel extends JPanel{
     protected JTextField pinTextField;
     protected Button celciusButton;
     protected Button fahrenheitButton;
+    protected JLabel voltageLabel;
+    protected JTextField voltageTextField;
     protected JLabel delayLabel;
     protected JTextField delayTextField;
     protected FocusChanger focusChanger;
     protected String path;
     protected int pinNumber = -1;
+    protected int voltage = -1;
     protected InputParser inputParser;
     
     //Initialize components and layout parameters        
@@ -32,6 +35,8 @@ public class TempPanel extends JPanel{
         pinTextField = new JTextField();
         celciusButton = new Button("Celcius");
         fahrenheitButton = new Button("Fahrenheit");
+        voltageLabel = new JLabel("Voltage");
+        voltageTextField = new JTextField();
         delayLabel = new JLabel("Delay");
         delayTextField = new JTextField();
         this.path = path;
@@ -39,7 +44,7 @@ public class TempPanel extends JPanel{
         focusChanger = new FocusChanger(path);
         
         //GridLayout manager
-        setLayout(new GridLayout(3,2));
+        setLayout(new GridLayout(4,2));
         
         //Border Manager
         setBorder(BorderFactory.createTitledBorder("Temperature Sensor"));
@@ -83,6 +88,21 @@ public class TempPanel extends JPanel{
                     "temperature = (sensorValue/1023)*powervoltage*100;\n" +
                     "// convert the celcius value to fahrenheit\n" +
                     "temperature = (temperature * (9/5)) + 32");
+            }
+        });
+        
+        voltageTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int temp = Integer.parseInt(voltageTextField.getText());
+                if(temp > 0){
+                    voltage = temp;
+                    focusChanger.changeWindow();
+                    inputParser.type("float voltage = " + voltage + ";\n");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please specify a positive value in the voltage textfield and press enter", "alert", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
