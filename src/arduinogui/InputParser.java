@@ -37,6 +37,7 @@ public class InputParser {
     }
     
     public void type(CharSequence characters) {
+        
         int length = characters.length();
         for (int i = 0; i < length; i++) {
             char character = characters.charAt(i);
@@ -178,27 +179,27 @@ public class InputParser {
                 break;
             case '~': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_BACK_QUOTE); 
                 break;
-            case '!': doType(KeyEvent.VK_EXCLAMATION_MARK); 
+            case '!': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_1); 
                 break;
-            case '@': doType(KeyEvent.VK_AT); 
+            case '@': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_2); 
                 break;
-            case '#': doType(KeyEvent.VK_NUMBER_SIGN); 
+            case '#': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_3); 
                 break;
-            case '$': doType(KeyEvent.VK_DOLLAR); 
+            case '$': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_4); 
                 break;
             case '%': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_5); 
                 break;
-            case '^': doType(KeyEvent.VK_CIRCUMFLEX); 
+            case '^': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_6); 
                 break;
-            case '&': doType(KeyEvent.VK_AMPERSAND); 
+            case '&': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_7); 
                 break;
-            case '*': doType(KeyEvent.VK_ASTERISK); 
+            case '*': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_8); 
                 break;
-            case '(': doType(KeyEvent.VK_LEFT_PARENTHESIS); 
+            case '(': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_9); 
                 break;
-            case ')': doType(KeyEvent.VK_RIGHT_PARENTHESIS); 
+            case ')': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_0); 
                 break;
-            case '_': doType(KeyEvent.VK_UNDERSCORE); 
+            case '_': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_MINUS); 
                 break;
             case '+': doType(KeyEvent.VK_PLUS); 
                 break;
@@ -220,11 +221,11 @@ public class InputParser {
                 break;
             case ';': doType(KeyEvent.VK_SEMICOLON); 
                 break;
-            case ':': doType(KeyEvent.VK_COLON); 
+            case ':': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_SEMICOLON); 
                 break;
             case '\'': doType(KeyEvent.VK_QUOTE); 
                 break;
-            case '"': doType(KeyEvent.VK_QUOTEDBL); 
+            case '"': doType(KeyEvent.VK_SHIFT, KeyEvent.VK_QUOTE); 
                 break;
             case ',': doType(KeyEvent.VK_COMMA); 
                 break;
