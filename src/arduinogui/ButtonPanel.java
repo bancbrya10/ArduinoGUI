@@ -17,7 +17,7 @@ public class ButtonPanel extends JPanel{
     protected JTextField pinTextField;
     protected Button checkButton;
     protected InputParser inputParser;
-    protected int pinNumber;
+    protected int pinNumber = -1;
     protected FocusChanger focusChanger;
     protected String path;
     
