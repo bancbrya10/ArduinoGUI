@@ -21,12 +21,9 @@ public class AnalogPanel extends JPanel{
     protected JTextField yPinTextField;
     protected JLabel dPinLabel;
     protected JTextField dPinTextField;
-    protected Button xHighButton;
-    protected Button yHighButton;
-    protected Button dHighButton;
-    protected Button xLowButton;
-    protected Button yLowButton;
-    protected Button dLowButton;
+    protected Button xReadButton;
+    protected Button yReadButton;
+    protected Button dReadButton;
     protected int xPinNumber = -1;
     protected int yPinNumber = -1;
     protected int dPinNumber = -1;
@@ -42,12 +39,9 @@ public class AnalogPanel extends JPanel{
         yPinTextField = new JTextField("");
         dPinLabel = new JLabel("D Pin");
         dPinTextField = new JTextField("");
-        xHighButton = new Button("X High");
-        yHighButton = new Button("Y High");
-        dHighButton = new Button("D High");
-        xLowButton = new Button("X Low");
-        yLowButton = new Button("Y Low");
-        dLowButton = new Button("D Low");
+        xReadButton = new Button("X Read");
+        yReadButton = new Button("Y Read");
+        dReadButton = new Button("D Read");
         this.path = path;
         inputParser = new InputParser();
         focusChanger = new FocusChanger(path);
@@ -66,10 +60,10 @@ public class AnalogPanel extends JPanel{
                 if(temp >= 0 && temp <= 13){
                     xPinNumber = temp;
                     focusChanger.changeWindow();
-                    inputParser.type("pinMode(" + xPinNumber + ", INPUT_PULLUP);\n");
+                    inputParser.type("pinMode(A" + xPinNumber + ", INPUT_PULLUP);\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-13", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-5", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -81,10 +75,10 @@ public class AnalogPanel extends JPanel{
                 if(temp >= 0 && temp <= 13){
                     yPinNumber = temp;
                     focusChanger.changeWindow();
-                    inputParser.type("pinMode(" + yPinNumber + ", INPUT_PULLUP);\n");
+                    inputParser.type("pinMode(A" + yPinNumber + ", INPUT_PULLUP);\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-13", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "alert", "Please enter a number 0-5", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -104,80 +98,41 @@ public class AnalogPanel extends JPanel{
             }
         });
         
-        xHighButton.addActionListener(new ActionListener() {
+        xReadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(xPinNumber >= 0 && xPinNumber <= 13){
                     focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + xPinNumber + ", HIGH);\n");
+                    inputParser.type("analogRead(A" + xPinNumber + ");\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a pin number 0-5 and press enter", "alert", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         
-        yHighButton.addActionListener(new ActionListener() {
+        yReadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(yPinNumber >= 0 && yPinNumber <= 13){
                     focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + yPinNumber + ", HIGH);\n");
+                    inputParser.type("analogRead(A" + yPinNumber + ");\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a pin number 0-5 and press enter", "alert", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         
-        dHighButton.addActionListener(new ActionListener() {
+        dReadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(dPinNumber >= 0 && dPinNumber <= 13){
                     focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + dPinNumber + ", HIGH);\n");
+                    inputParser.type("digitalRead(" + dPinNumber + ");\n");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        xLowButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if(xPinNumber >= 0 && xPinNumber <= 13){
-                    focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + xPinNumber + ", LOW);\n");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        yLowButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if(xPinNumber >= 0 && yPinNumber <= 13){
-                    focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + yPinNumber + ", LOW);\n");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        dLowButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if(dPinNumber >= 0 && dPinNumber <= 13){
-                    focusChanger.changeWindow();
-                    inputParser.type("digitalWrite(" + dPinNumber + ", LOW);\n");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Please enter a pin number and press enter", "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a pin number 0-13 and press enter", "alert", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -189,11 +144,8 @@ public class AnalogPanel extends JPanel{
         add(yPinTextField);
         add(dPinLabel);
         add(dPinTextField);
-        add(xHighButton);
-        add(yHighButton);
-        add(dHighButton);
-        add(xLowButton);
-        add(yLowButton);
-        add(dLowButton);
+        add(xReadButton);
+        add(yReadButton);
+        add(dReadButton);
     }
 }
